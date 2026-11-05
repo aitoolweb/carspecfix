@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PSI ↔ Bar helper — CarSpecFix</title>
+<style>body{font-family:system-ui,sans-serif;max-width:40rem;margin:2rem auto;padding:0 1rem;line-height:1.5}
+label,input{display:block;margin:.5rem 0}input{padding:.4rem;width:100%;max-width:12rem}
+.card{border:1px solid #ddd;border-radius:8px;padding:1rem;margin-top:1rem}a.cta{display:inline-block;margin-top:1rem;background:#2563eb;color:#fff;padding:.6rem 1rem;border-radius:6px;text-decoration:none}</style></head>
+<body>
+<h1>Tire pressure unit helper</h1>
+<p>Quick PSI ↔ bar conversion. Car specs and recalls live on the main site.</p>
+<label>PSI <input id="psi" type="number" step="0.1" value="32"></label>
+<label>Bar <input id="bar" type="number" step="0.01"></label>
+<div class="card" id="note">Enter a value in either field.</div>
+<p><a class="cta" href="https://carspecfix.com/">Open CarSpecFix</a></p>
+<script>
+const psi=document.getElementById('psi'), bar=document.getElementById('bar'), note=document.getElementById('note');
+psi.oninput=()=>{bar.value=(psi.value/14.5038).toFixed(2); note.textContent=psi.value+' PSI ≈ '+bar.value+' bar';};
+bar.oninput=()=>{psi.value=(bar.value*14.5038).toFixed(1); note.textContent=bar.value+' bar ≈ '+psi.value+' PSI';};
+</script></body></html>
